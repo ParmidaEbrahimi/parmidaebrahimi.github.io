@@ -5,15 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-.button {
-    padding: 0.5rem 1rem;
-    display: block;
-    background-color: red;
-}
+        .button {
+            padding: 2rem 2rem;
+            display: inline-block;
+            background-color: red;
+        }
     </style>
 </head>
 <body>
-    next
-    <a href="./index.html" class="button">mainpage</a>
+    next <br>
+    <a href="./index.html" class="button">mainpage</a> <br>
+    <button id="javascript-test">Test</button>
+
+    <script async>
+        document.getElementById('javascript-test').addEventListener('click', () => {
+            alert('Heyyyy!') 
+        })
+    </script>
 </body>
 </html>
