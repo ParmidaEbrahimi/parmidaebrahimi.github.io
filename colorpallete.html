@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button {
+            padding: 2rem 2rem;
+            display: inline-block;
+            background-color: rgb(0, 217, 255);
+        }
+    </style>
+</head>
+<body>
+    <p id="question">which color is blueviolet?</p>
+    <div>
+     <button id="cyan" class="button">Test</button>
+     <button id="blueviolet" style="background-color: blueviolet;" class="button">test2</button>
+    </div>
+
+    <script>
+        let question = document.getElementById('question')
+        let cyanButton = document.getElementById('cyan')
+        let bluevioletButton = document.getElementById('blueviolet')
+
+        let colors = ['cyan', 'blueviolet']
+        let current
+
+        let generate = () => {
+            current = colors[Math.floor(Math.random() * colors.length)]
+            question.innerText = 'which color is ' + current + '?'
+        }
+
+        generate()
+
+        cyanButton.addEventListener('click', () => {
+            if (current === 'cyan') {
+                alert('correct')
+                generate()
+            } else {
+                alert('wrong')
+            }
+        })
+
+        bluevioletButton.addEventListener('click', () => {
+            if (current === 'blueviolet') {
+                alert('correct')
+                generate()
+            } else {
+                alert('wrong')
+            }
+        })
+
+    </script>
+</body>
+</html>
