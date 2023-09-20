@@ -7,7 +7,30 @@
     <title>colorpallete</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Inclusive Sans', sans-serif;
+        }
+
+        body {
+            background-color: #ddd;
+        }
+
+        .main-body {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+        }
+
+        #question {
+            margin-bottom: 1rem;
+            display: block;
+        }
+
         .button {
             padding: 2rem 2rem;
             display: inline-block;
@@ -29,22 +52,24 @@
         .button-container {
             display: flex;
             gap: 1rem;
+            margin-bottom: 2rem;
         }
     </style>
 </head>
 
 <body>
-    <p id="question">which color is blueviolet?</p>
-    <div class="button-container">
-        <button id="template" class="button">template</button>
-        <!-- <span id="target"></span> -->
-        <!-- <button id="blueviolet" style="background-color: blueviolet;" class="button">no here!!!!!!!</button>
-     <br><br>
-     <button id="green" style="background-color:green;" class="button">it's me, they lying</button>
-     <button id="pyro" style="background-color:rgb(222, 36, 36);" class="button">idk either</button> -->
+    <div class="main-body">
+        <span id="question">which color is blueviolet?</span>
+        <div class="button-container">
+            <button id="template" class="button">template</button>
+            <!-- <span id="target"></span> -->
+            <!-- <button id="blueviolet" style="background-color: blueviolet;" class="button">no here!!!!!!!</button>
+         <br><br>
+         <button id="green" style="background-color:green;" class="button">it's me, they lying</button>
+         <button id="pyro" style="background-color:rgb(222, 36, 36);" class="button">idk either</button> -->
+        </div>
+        <a href="./index.html">mainpage</a>
     </div>
-
-    <a href="./index.html">mainpage</a> <br>
 
     <script>
         let question = document.getElementById('question')
