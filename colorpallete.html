@@ -9,7 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -18,12 +20,15 @@
 
         body {
             background-color: #ddd;
+            padding: 1rem;
         }
 
         .main-body {
             background-color: #fff;
             padding: 2rem;
             border-radius: 5px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         #question {
@@ -41,18 +46,43 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.416);
             font-size: 1rem;
             transition: transform 0.1s ease-out;
+            border: 2px solid rgba(0, 0, 0, 0.2);
 
             &:hover {
                 /* font-size: 2rem;
                 color: black; */
                 transform: translateY(-10px) scale(1.1);
             }
+
+            &:active {
+                transform: translateY(-3px) scale(1.05);
+            }
+
         }
 
         .button-container {
             display: flex;
             gap: 1rem;
             margin-bottom: 2rem;
+        }
+
+        #refresh {
+            background-color: #9b59b6;
+            border: 0;
+            padding: 0.5rem 1rem;
+            color: #fff;
+            border-radius: 5px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            transition: background 0.1s ease-out;
+            margin-bottom: 1rem;
+
+            &:hover {
+                background-color: #a766c1;
+            }
+
+            &:active {
+                background-color: #743e89;
+            }
         }
     </style>
 </head>
@@ -68,6 +98,7 @@
          <button id="green" style="background-color:green;" class="button">it's me, they lying</button>
          <button id="pyro" style="background-color:rgb(222, 36, 36);" class="button">idk either</button> -->
         </div>
+        <button id="refresh">Refresh!</button><br>
         <a href="./index.html">mainpage</a>
     </div>
 
@@ -98,6 +129,23 @@
             },
         ]
 
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+
+            while (currentIndex > 0) {
+
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+
+                [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex], array[currentIndex]];
+            }
+
+            return array;
+        }
+        
+        shuffle(colors)
+
         let current
 
         let generate = () => {
@@ -125,6 +173,10 @@
 
         template.remove()
 
+        let refresh = document.getElementById('refresh');
+        refresh.addEventListener('click', () => {
+            generate()
+        })
 
         // let arr = ["1", "2", "3", "4"];
         // function randomText() {
