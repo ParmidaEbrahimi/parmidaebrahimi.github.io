@@ -26,17 +26,21 @@
 <body>
     <p id="question">which color is blueviolet?</p>
     <div>
-     <button id="cyan" class="button">Test</button>
-     <button id="blueviolet" style="background-color: blueviolet;" class="button">test2</button>
+     <button id="cyan" class="button">here, trust me!</button>
+     <button id="blueviolet" style="background-color: blueviolet;" class="button">no here!!</button>
+     <button id="green" style="background-color:green;" class="button">it's me, they lying</button>
+
     </div>
+
     <a href="./index.html">mainpage</a> <br>
 
     <script>
         let question = document.getElementById('question')
         let cyanButton = document.getElementById('cyan')
         let bluevioletButton = document.getElementById('blueviolet')
+        let greenButton = document.getElementById('green')
 
-        let colors = ['cyan', 'blueviolet']
+        let colors = ['cyan', 'blueviolet', 'green']
         let current
 
         let generate = () => {
@@ -63,6 +67,15 @@
                 alert('wrong')
             }
         })
+
+        greenButton.addEventListener('click', () => {
+            if (current === 'green') {
+                alert('correct')
+                generate()
+            } else {
+                alert('wrong')
+            }
+        })   
 
     </script>
     

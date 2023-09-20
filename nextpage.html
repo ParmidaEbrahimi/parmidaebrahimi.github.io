@@ -8,15 +8,28 @@
         .button {
             padding: 2rem 2rem;
             display: inline-block;
-            background-color: red;
+            background-color: rgb(0, 242, 255);
+            border-radius: 10px;
+            font-size: 1rem;
+            
+            animation-name: example;
+            animation-duration: 10s;
+        }
+
+        @keyframes example {
+            0%   {background-color: red;}
+            25%  {background-color: yellow;}
+            50%  {background-color: blue;}
+            100% {background-color: rgb(0, 242, 255);}   
         }
     </style>
 </head>
 <body>
-    next <br>
-    <a href="./index.html" class="button">mainpage</a> <br>
-    <button id="javascript-test">Test</button>
-
+    nothing here, it's just testing! <br>
+    <a href="./index.html" class="button">mainpage</a> 
+    <br>
+    <button id="javascript-test">Click here!</button>
+    <div></div>
     <script async>
         document.getElementById('javascript-test').addEventListener('click', () => {
             alert('Heyyyy!') 
