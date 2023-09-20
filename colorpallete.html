@@ -1,56 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>colorpallete</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.min.css" rel="stylesheet">
     <style>
         .button {
             padding: 2rem 2rem;
             display: inline-block;
             background-color: rgb(0, 217, 255);
-            border:none;
+            border: none;
             border-radius: 5px;
             color: antiquewhite;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.416);
             font-size: 1rem;
             transition: transform 0.1s ease-out;
+
             &:hover {
                 /* font-size: 2rem;
                 color: black; */
                 transform: translateY(-10px) scale(1.1);
             }
         }
+
+        .button-container {
+            display: flex;
+            gap: 1rem;
+        }
     </style>
 </head>
+
 <body>
     <p id="question">which color is blueviolet?</p>
-    <div>
-     <button id="cyan" class="button">here, trust me!</button>
-     <button id="blueviolet" style="background-color: blueviolet;" class="button">no here!!!!!!!</button>
+    <div class="button-container">
+        <button id="template" class="button">template</button>
+        <!-- <span id="target"></span> -->
+        <!-- <button id="blueviolet" style="background-color: blueviolet;" class="button">no here!!!!!!!</button>
      <br><br>
      <button id="green" style="background-color:green;" class="button">it's me, they lying</button>
-     <button id="pyro" style="background-color:rgb(222, 36, 36);" class="button">idk either</button>
+     <button id="pyro" style="background-color:rgb(222, 36, 36);" class="button">idk either</button> -->
     </div>
 
     <a href="./index.html">mainpage</a> <br>
 
     <script>
         let question = document.getElementById('question')
-        let cyanButton = document.getElementById('cyan')
-        let bluevioletButton = document.getElementById('blueviolet')
-        let greenButton = document.getElementById('green')
-        let pyroButton = document.getElementById('pyro')
+        let template = document.getElementById('template')
+        // let cyanButton = document.getElementById('cyan')
+        // let bluevioletButton = document.getElementById('blueviolet')
+        // let greenButton = document.getElementById('green')
+        // let pyroButton = document.getElementById('pyro')
 
-        let colors = ['cyan', 'blueviolet', 'green', 'pyro']
+        let colors = [
+            {
+                name: 'cyan',
+                color: 'cyan',
+            },
+            {
+                name: 'blueviolet',
+                color: 'blueviolet',
+            },
+            {
+                name: 'green',
+                color: 'green',
+            },
+            {
+                name: 'pyro',
+                color: 'red',
+            },
+        ]
+
         let current
 
         let generate = () => {
             current = colors[Math.floor(Math.random() * colors.length)]
-            question.innerText = 'which color is ' + current + '?'
+            question.innerText = 'which color is ' + current.name + '?'
         }
 
         generate()
+
+        for (let color of colors) {
+            color.elem = template.cloneNode()
+            // color.elem.innerText = color.name
+            color.elem.style.backgroundColor = color.color
+            template.parentNode.appendChild(color.elem)
+
+            color.elem.addEventListener('click', () => {
+                if (current === color) {
+                    Swal.fire('Correct', 'You clicked the right one!', 'success')
+                    generate()
+                } else {
+                    Swal.fire('Wrong', 'You clicked the wrong one!', 'error')
+                }
+            })
+        }
+
+        template.remove()
+
 
         // let arr = ["1", "2", "3", "4"];
         // function randomText() {
@@ -58,43 +107,63 @@
         // }
         // randomText()
 
-        cyanButton.addEventListener('click', () => {
-            if (current === 'cyan') {
-                alert('correct')
-                generate()
-            } else {
-                alert('wrong')
-            }
-        })
+        // let target = document.getElementById('cyan');
+        // let titles = [
+        //     'Title 1',
+        //     'Title 2',
+        //     'Title 3',
+        //     'Title 4',
+        //     'Title 5'
+        // ];
 
-        bluevioletButton.addEventListener('click', () => {
-            if (current === 'blueviolet') {
-                alert('correct')
-                generate()
-            } else {
-                alert('wrong')
-            }
-        })
 
-        greenButton.addEventListener('click', () => {
-            if (current === 'green') {
-                alert('correct')
-                generate()
-            } else {
-                alert('wrong')
-            }
-        }) 
-        
-        pyroButton.addEventListener('click', () => {
-            if (current === 'pyro') {
-                alert('correct')
-                generate()
-            } else {
-                alert('wrong')
-            }
-        }) 
+
+        // function newTitle() {
+        //     let i = Math.floor(Math.random() * titles.length);
+        //     target.innerText = titles[i];
+        // }
+
+        // newTitle();
+
+
+        // cyanButton.addEventListener('click', () => {
+        //     if (current === 'cyan') {
+        //         alert('correct')
+        //         generate()
+        //     } else {
+        //         alert('wrong')
+        //     }
+        // })
+
+        // bluevioletButton.addEventListener('click', () => {
+        //     if (current === 'blueviolet') {
+        //         alert('correct')
+        //         generate()
+        //     } else {
+        //         alert('wrong')
+        //     }
+        // })
+
+        // greenButton.addEventListener('click', () => {
+        //     if (current === 'green') {
+        //         alert('correct')
+        //         generate()
+        //     } else {
+        //         alert('wrong')
+        //     }
+        // })
+
+        // pyroButton.addEventListener('click', () => {
+        //     if (current === 'pyro') {
+        //         alert('correct')
+        //         generate()
+        //     } else {
+        //         alert('wrong')
+        //     }
+        // })
 
     </script>
-    
+
 </body>
+
 </html>
